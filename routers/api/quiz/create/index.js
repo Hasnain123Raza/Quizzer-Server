@@ -1,8 +1,10 @@
 import express from "express";
 import quizModel from "../../../../services/database/models/quiz.js";
 import quizSchema from "./quizSchema.js";
+import authenticatedMiddleware from "../../../../middlewares/authenticated.js";
 
 const router = express.Router();
+router.use(authenticatedMiddleware);
 
 router.post("/postQuiz", async (request, response) => {
   let quiz = request.body;
